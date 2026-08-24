@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Derince Eco-Production Hub — Work Samples</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1b1d1c; --paper:#e7e4d8; --paper-2:#dedad0;
+  --blue:#35586b; --blue-deep:#1f3947; --line:#b9b2a0; --red:#b23a2e; --white:#f6f4ec;
+  --disp:'Space Grotesk', sans-serif; --body:'IBM Plex Sans', sans-serif; --mono:'IBM Plex Mono', monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;}
+body{background:var(--ink);color:var(--paper);font-family:var(--body);overflow:hidden;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+::selection{background:var(--red);color:var(--white);}
+img{display:block;max-width:100%;max-height:100%;}
+
+#app{position:relative;width:100vw;height:100vh;display:flex;}
+#index{width:210px;min-width:210px;height:100%;background:var(--blue-deep);border-right:2px solid var(--red);display:flex;flex-direction:column;align-items:stretch;padding:24px 18px;z-index:60;}
+#index .brand{font-family:var(--disp);font-size:13px;line-height:1.3;letter-spacing:.04em;opacity:.6;margin-bottom:30px;text-transform:uppercase;}
+.idx-item{width:100%;padding:10px 8px;margin-bottom:4px;border-radius:2px;display:flex;flex-direction:row;align-items:center;gap:10px;opacity:.55;transition:opacity .2s, background .2s;text-align:left;}
+.idx-item .tag{font-family:var(--mono);font-size:10px;letter-spacing:.05em;flex:none;}
+.idx-item .lbl{font-family:var(--disp);font-size:13px;letter-spacing:.01em;text-transform:uppercase;}
+.idx-item:hover{opacity:.85;}
+.idx-item.active{opacity:1;background:rgba(246,244,236,.08);}
+.idx-item.active .tag{color:var(--red);}
+#index .spacer{flex:1;}
+#index .scale{font-family:var(--mono);font-size:9px;opacity:.4;letter-spacing:.05em;}
+
+#stage{flex:1;position:relative;height:100%;overflow:hidden;background:
+  linear-gradient(var(--line) 1px, transparent 1px) 0 0/40px 40px,
+  linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0/40px 40px, var(--ink);
+  background-blend-mode:overlay;
+}
+.view{position:absolute;inset:0;display:flex;flex-direction:column;opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s ease, transform .4s ease;}
+.view.active{opacity:1;pointer-events:auto;transform:translateY(0);}
+
+.view-head{padding:26px 40px 16px;display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1px solid rgba(231,228,216,.15);}
+.view-head .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.15em;color:var(--red);text-transform:uppercase;}
+.view-head h1{font-family:var(--disp);font-weight:500;font-size:clamp(20px,2.6vw,30px);margin-top:6px;}
+.view-head .meta{font-family:var(--mono);font-size:11px;opacity:.5;text-align:right;}
+
+/* ---------- LANDING ---------- */
+.landing-hero{padding:44px 40px 28px;border-bottom:1px solid rgba(231,228,216,.15);}
+.landing-hero .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--blue);opacity:.85;text-transform:uppercase;margin-bottom:16px;}
+.landing-hero .hero-title{font-family:var(--disp);font-weight:700;font-size:clamp(30px,4vw,54px);line-height:1.05;letter-spacing:-.01em;margin-bottom:10px;}
+.landing-hero .hero-sub{font-family:var(--body);font-size:clamp(14px,1.3vw,17px);opacity:.75;max-width:62ch;line-height:1.5;margin-bottom:20px;}
+.landing-hero .hero-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.landing-hero .hero-name{font-family:var(--disp);font-size:14px;letter-spacing:.03em;padding:7px 14px;border:1px solid var(--red);color:var(--paper);}
+.landing-hero .hero-tagline{font-family:var(--mono);font-size:11px;opacity:.5;letter-spacing:.01em;}
+#view-landing .grid{flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(231,228,216,.15);}
+.sheet-card{background:var(--ink);position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:32px;overflow:hidden;transition:background .3s;}
+.sheet-card:hover{background:#242624;}
+.sheet-card .num{position:absolute;top:24px;left:32px;font-family:var(--mono);font-size:12px;color:var(--red);letter-spacing:.1em;}
+.sheet-card h2{font-family:var(--disp);font-weight:500;font-size:24px;margin-bottom:8px;}
+.sheet-card p{font-size:13px;opacity:.6;line-height:1.5;max-width:26ch;}
+.sheet-card .go{margin-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;display:inline-flex;align-items:center;gap:6px;opacity:.8;}
+.sheet-card .go svg{transition:transform .2s;}
+.sheet-card:hover .go svg{transform:translateX(4px);}
+.sheet-card .thumb{position:absolute;right:26px;bottom:26px;width:130px;height:92px;border:1px solid var(--blue);background:var(--paper-2);overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.sheet-card .thumb img{width:100%;height:100%;object-fit:cover;}
+.sheet-card .thumb .fallback{font-family:var(--mono);font-size:9px;color:var(--blue-deep);opacity:.5;text-align:center;padding:6px;}
+.mini-fold{position:absolute;right:30px;bottom:24px;width:110px;height:76px;perspective:600px;opacity:.9;}
+.mini-fold .p{width:100%;height:100%;transform-style:preserve-3d;transform:rotateX(46deg) rotateZ(-30deg);position:relative;display:flex;}
+.mini-fold .f{position:relative;width:33.334%;height:100%;background:var(--paper);border:1px solid var(--blue-deep);}
+.mini-fold .f1{transform-origin:right;transform:rotateY(30deg);}
+.mini-fold .f3{transform-origin:left;transform:rotateY(-30deg);}
+
+/* ---------- SHARED IMAGE VIEWER (booklet) ---------- */
+.viewer-body{flex:1;display:flex;align-items:center;justify-content:center;position:relative;padding:20px 90px;}
+.frame{width:min(80vw,1000px);max-height:74vh;background:var(--paper);position:relative;box-shadow:0 30px 60px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.frame img{width:100%;height:100%;object-fit:contain;}
+.frame .missing{font-family:var(--mono);font-size:12px;color:var(--blue-deep);opacity:.55;text-align:center;padding:40px;line-height:1.7;}
+.frame .missing b{display:block;font-family:var(--disp);font-size:15px;color:var(--ink);margin-bottom:8px;}
+.nav-arrow{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;background:rgba(231,228,216,.08);border:1px solid rgba(231,228,216,.25);display:flex;align-items:center;justify-content:center;transition:background .2s, border-color .2s;}
+.nav-arrow:hover{background:rgba(231,228,216,.18);border-color:var(--red);}
+.nav-arrow.left{left:20px;}
+.nav-arrow.right{right:20px;}
+.page-strip{padding:14px 40px;display:flex;gap:6px;overflow-x:auto;border-top:1px solid rgba(231,228,216,.15);}
+.page-strip .dot{width:44px;height:32px;flex:none;border:1px solid rgba(231,228,216,.3);font-family:var(--mono);font-size:9px;display:flex;align-items:center;justify-content:center;opacity:.5;transition:opacity .2s,border-color .2s;overflow:hidden;background:rgba(231,228,216,.05);}
+.page-strip .dot img{width:100%;height:100%;object-fit:cover;}
+.page-strip .dot.active{opacity:1;border-color:var(--red);}
+
+/* ---------- BROCHURES ---------- */
+#view-brochures .body{flex:1;position:relative;padding:30px 50px;display:flex;align-items:center;justify-content:center;}
+.broch-stage{width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative;}
+
+/* grid state: 4 equal closed brochures */
+.broch-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;width:100%;max-width:980px;transition:opacity .3s;}
+.broch-item{display:flex;flex-direction:column;align-items:center;gap:14px;cursor:pointer;}
+.broch-item .name{font-family:var(--disp);font-size:14px;text-align:center;opacity:.85;}
+.broch-item .tag{font-family:var(--mono);font-size:10px;color:var(--red);}
+
+.fold{perspective:1000px;width:160px;height:200px;transition:transform .25s;}
+.broch-item:hover .fold{transform:translateY(-4px);}
+.fold .panels{width:100%;height:100%;transform-style:preserve-3d;position:relative;display:flex;transform:rotateX(16deg) rotateY(-22deg);transition:transform .5s ease;}
+.fold .panel{width:33.334%;height:100%;background-repeat:no-repeat;background-size:300% 100%;border:1px solid var(--blue-deep);background-color:var(--paper-2);flex:none;backface-visibility:hidden;}
+.fold .panel.p1{background-position:0% 0%;transform-origin:right center;transform:rotateY(34deg);}
+.fold .panel.p2{background-position:50% 0%;}
+.fold .panel.p3{background-position:100% 0%;transform-origin:left center;transform:rotateY(-34deg);}
+
+/* focused state: one big flat brochure + rail of the rest */
+.broch-focus{display:none;width:100%;height:100%;align-items:center;justify-content:center;gap:36px;}
+.broch-focus.active{display:flex;}
+.broch-grid.hidden{display:none;}
+
+.focus-main{display:flex;flex-direction:column;align-items:center;gap:16px;position:relative;}
+.focus-main .fold{width:min(56vw,620px);height:min(52vh,420px);perspective:1800px;}
+.focus-main .fold .panels{transform:rotateX(0) rotateY(0);}
+.focus-main .fold .panel.p1{transform:rotateY(0);}
+.focus-main .fold .panel.p3{transform:rotateY(0);}
+.focus-controls{display:flex;gap:10px;align-items:center;}
+.pill-btn{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(231,228,216,.3);padding:8px 14px;transition:border-color .2s;}
+.pill-btn:hover{border-color:var(--red);}
+.close-focus{position:absolute;top:-40px;right:0;font-family:var(--mono);font-size:11px;opacity:.6;}
+.close-focus:hover{opacity:1;}
+
+.focus-rail{display:flex;flex-direction:column;gap:22px;}
+.rail-item{display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;opacity:.5;transition:opacity .2s;}
+.rail-item:hover{opacity:.85;}
+.rail-item.active{opacity:1;}
+.rail-item .fold{width:76px;height:96px;}
+.rail-item .name{font-family:var(--mono);font-size:9px;opacity:.7;}
+
+/* ---------- BIMX ---------- */
+#view-bimx .body{flex:1;padding:24px 40px 40px;display:flex;flex-direction:column;}
+.bimx-frame{flex:1;background:#0c0f10;border:1px solid rgba(231,228,216,.2);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.bimx-frame iframe{width:100%;height:100%;border:0;}
+.bimx-open{position:absolute;top:16px;right:16px;z-index:5;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--white);background:var(--red);padding:9px 16px;display:inline-flex;align-items:center;gap:8px;box-shadow:0 8px 20px rgba(0,0,0,.4);transition:opacity .2s;}
+.bimx-open:hover{opacity:.85;}
+.bimx-placeholder{text-align:center;max-width:420px;padding:20px;}
+.bimx-placeholder .ring{width:70px;height:70px;margin:0 auto 18px;border-radius:50%;border:1px dashed var(--blue);display:flex;align-items:center;justify-content:center;}
+.bimx-placeholder h3{font-family:var(--disp);font-size:17px;margin-bottom:8px;}
+.bimx-placeholder p{font-size:12.5px;opacity:.55;line-height:1.6;}
+.bimx-placeholder code{display:block;margin-top:12px;font-family:var(--mono);font-size:11px;background:rgba(231,228,216,.06);padding:8px 10px;border:1px solid rgba(231,228,216,.15);text-align:left;opacity:.8;}
+
+@media (max-width:900px){
+  #index{width:60px;min-width:60px;padding:20px 0;}
+  #index .brand{display:none;}
+  .idx-item{justify-content:center;padding:10px 0;}
+  .idx-item .lbl{display:none;}
+  #view-landing .grid{grid-template-columns:1fr;}
+  .viewer-body{padding:10px 60px;}
+  .broch-grid{grid-template-columns:repeat(2,1fr);gap:24px;}
+  .broch-focus.active{flex-direction:column;}
+  .focus-rail{flex-direction:row;}
+}
+</style>
+</head>
+<body>
+<div id="app">
+
+  <nav id="index">
+    <div class="brand">Derince Eco-Production Hub</div>
+    <button class="idx-item" data-view="landing"><span class="tag">IX</span><span class="lbl">Index</span></button>
+    <button class="idx-item" data-view="bimx"><span class="tag">A—00</span><span class="lbl">BIMx Model</span></button>
+    <button class="idx-item" data-view="booklet"><span class="tag">A—01</span><span class="lbl">Booklet</span></button>
+    <button class="idx-item" data-view="brochures"><span class="tag">B—01</span><span class="lbl">Brochures</span></button>
+    <div class="spacer"></div>
+    <div class="scale">1 : NTS — REV.03</div>
+  </nav>
+
+  <div id="stage">
+
+    <!-- LANDING -->
+    <section class="view active" id="view-landing">
+      <div class="landing-hero">
+        <div class="eyebrow">MIM 4902E Diploma Project — Istanbul Technical University, Faculty of Architecture</div>
+        <h1 class="hero-title">Derince Eco-Production Hub</h1>
+        <p class="hero-sub">From Shell to Shelf: Agricultural Waste to Sustainable Packaging</p>
+        <div class="hero-meta">
+          <span class="hero-name">Serhat Emre Çetiner</span>
+          <span class="hero-tagline">Fully designed in ArchiCAD — ready to walk through with BIM stakeholders.</span>
+        </div>
+      </div>
+      <div class="view-head">
+        <div><div class="kicker">Sheet Index</div><h1>Select a sheet</h1></div>
+        <div class="meta">3 SHEETS</div>
+      </div>
+      <div class="grid">
+        <div class="sheet-card" data-goto="bimx">
+          <div class="num">A—00</div>
+          <div class="thumb"><div class="fallback">BIMx<br>PREVIEW</div></div>
+          <h2>BIMx Interactive Model</h2>
+          <p>Live, walkable 3D model via ArchiCAD BIMx.</p>
+          <span class="go">OPEN <svg width="14" height="10" viewBox="0 0 14 10"><path d="M0 5H13M9 1L13 5L9 9" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span>
+        </div>
+        <div class="sheet-card" data-goto="booklet">
+          <div class="num" id="land-bk-count">A—01</div>
+          <div class="thumb"><img id="land-bk-thumb" src="images/booklet/01.webp" alt="" onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='block';"><div class="fallback" style="display:none;">PAGE 01<br>NO IMAGE YET</div></div>
+          <h2>Project Booklet</h2>
+          <p>Landscape A3 — project narrative booklet.</p>
+          <span class="go">VIEW <svg width="14" height="10" viewBox="0 0 14 10"><path d="M0 5H13M9 1L13 5L9 9" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span>
+        </div>
+        <div class="sheet-card" data-goto="brochures">
+          <div class="num">B—01</div>
+          <div class="mini-fold"><div class="p"><div class="f f1"></div><div class="f f2"></div><div class="f f3"></div></div></div>
+          <h2>Brochures for Stakeholders</h2>
+          <p>4 tri-fold A4 brochures, printed front &amp; back.</p>
+          <span class="go">VIEW <svg width="14" height="10" viewBox="0 0 14 10"><path d="M0 5H13M9 1L13 5L9 9" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- BIMX -->
+    <section class="view" id="view-bimx">
+      <div class="view-head">
+        <div><div class="kicker">A—00 — Live Model</div><h1>BIMx Online Model</h1></div>
+        <div class="meta">ARCHICAD BIMx<br>WALKABLE</div>
+      </div>
+      <div class="body">
+        <div class="bimx-frame" id="bimx-frame">
+          <div class="bimx-placeholder">
+            <div class="ring">▲</div>
+            <h3>Add your BIMx share link</h3>
+            <p>Replace BIMX_URL in the script below with your BIMx share link — the model will become fully walkable right in the browser.</p>
+            <code>const BIMX_URL = "https://bimx.graphisoft.com/view/YOUR-LINK";</code>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOOKLET -->
+    <section class="view" id="view-booklet">
+      <div class="view-head">
+        <div><div class="kicker">A—01 — Project Booklet</div><h1>Page <span id="bk-current">1</span> / <span id="bk-total">16</span></h1></div>
+        <div class="meta">FORMAT: LANDSCAPE A3</div>
+      </div>
+      <div class="viewer-body">
+        <button class="nav-arrow left" id="bk-prev"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M10 2L4 8L10 14" stroke="#e7e4d8" stroke-width="1.6" fill="none"/></svg></button>
+        <div class="frame" id="bk-frame"></div>
+        <button class="nav-arrow right" id="bk-next"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 2L12 8L6 14" stroke="#e7e4d8" stroke-width="1.6" fill="none"/></svg></button>
+      </div>
+      <div class="page-strip" id="bk-strip"></div>
+    </section>
+
+    <!-- BROCHURES -->
+    <section class="view" id="view-brochures">
+      <div class="view-head">
+        <div><div class="kicker">B—01 — For Stakeholders</div><h1>4 Brochures</h1></div>
+        <div class="meta">FORMAT: A4, TRI-FOLD<br>PRINTED BOTH SIDES</div>
+      </div>
+      <div class="body">
+        <div class="broch-stage">
+          <div class="broch-grid" id="broch-grid"></div>
+          <div class="broch-focus" id="broch-focus">
+            <div class="focus-main">
+              <button class="close-focus" id="broch-close">✕ CLOSE</button>
+              <div class="fold" id="focus-fold">
+                <div class="panels">
+                  <div class="panel p1"></div>
+                  <div class="panel p2"></div>
+                  <div class="panel p3"></div>
+                </div>
+              </div>
+              <div class="focus-controls">
+                <button class="pill-btn" id="focus-flip">Show back ⤿</button>
+              </div>
+            </div>
+            <div class="focus-rail" id="focus-rail"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   CONTENT SETTINGS — this is the only part you need to edit.
+   Drop images next to portfolio.html in these folders:
+     images/booklet/01.webp ... NN.webp        (BOOKLET_COUNT files)
+     images/brochures/1-front.webp, 1-back.webp
+     images/brochures/2-front.webp, 2-back.webp
+     images/brochures/3-front.webp, 3-back.webp
+     images/brochures/4-front.webp, 4-back.webp
+   Each front/back image is the FULL flat 3-panel spread —
+   the site automatically slices it into three panels, no
+   manual cropping needed.
+   ============================================================ */
+const BOOKLET_COUNT = 16;
+const BROCHURES = [
+  { name: 'Brochure 1' },
+  { name: 'Brochure 2' },
+  { name: 'Brochure 3' },
+  { name: 'Brochure 4' }
+];
+const BIMX_URL = "https://bimx.graphisoft.com/model/8f1728c9-b58d-4829-95c0-2cdab9e74308";
+/* ============================================================ */
+
+function pad(n){ return String(n).padStart(2,'0'); }
+
+function showView(name){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById('view-'+name).classList.add('active');
+  document.querySelectorAll('#index .idx-item').forEach(b=>b.classList.remove('active'));
+  const btns = document.querySelectorAll('#index .idx-item');
+  const map = {landing:0, bimx:1, booklet:2, brochures:3};
+  btns[map[name]].classList.add('active');
+}
+document.querySelectorAll('#index .idx-item').forEach(btn=> btn.addEventListener('click', ()=> showView(btn.dataset.view)));
+document.querySelectorAll('[data-goto]').forEach(el=> el.addEventListener('click', ()=> showView(el.dataset.goto)));
+
+/* ---------- BOOKLET ---------- */
+(function(){
+  let idx = 0;
+  const frame = document.getElementById('bk-frame');
+  const strip = document.getElementById('bk-strip');
+  document.getElementById('bk-total').textContent = BOOKLET_COUNT;
+  document.getElementById('land-bk-count').textContent = `A—01 / A—${pad(BOOKLET_COUNT)}`;
+
+  for(let i=1;i<=BOOKLET_COUNT;i++){
+    const dot = document.createElement('div');
+    dot.className='dot';
+    const img = document.createElement('img');
+    img.src = `images/booklet/${pad(i)}.webp`;
+    img.loading='lazy';
+    img.onerror = ()=>{ dot.textContent = pad(i); dot.style.opacity=.3; };
+    dot.appendChild(img);
+    dot.addEventListener('click', ()=>{ idx=i-1; render(); });
+    strip.appendChild(dot);
+  }
+  function render(){
+    document.getElementById('bk-current').textContent = idx+1;
+    frame.innerHTML='';
+    const img = new Image();
+    img.src = `images/booklet/${pad(idx+1)}.webp`;
+    img.onerror = ()=>{ frame.innerHTML = `<div class="missing"><b>Image not found</b>Add images/booklet/${pad(idx+1)}.webp to the folder.</div>`; };
+    frame.appendChild(img);
+    strip.querySelectorAll('.dot').forEach((d,i)=> d.classList.toggle('active', i===idx));
+  }
+  document.getElementById('bk-prev').addEventListener('click', ()=>{ idx=(idx-1+BOOKLET_COUNT)%BOOKLET_COUNT; render(); });
+  document.getElementById('bk-next').addEventListener('click', ()=>{ idx=(idx+1)%BOOKLET_COUNT; render(); });
+  document.addEventListener('keydown', e=>{
+    if(!document.getElementById('view-booklet').classList.contains('active')) return;
+    if(e.key==='ArrowRight') document.getElementById('bk-next').click();
+    if(e.key==='ArrowLeft') document.getElementById('bk-prev').click();
+  });
+  render();
+})();
+
+/* ---------- BROCHURES ---------- */
+(function(){
+  const grid = document.getElementById('broch-grid');
+  const focusEl = document.getElementById('broch-focus');
+  const focusFold = document.getElementById('focus-fold');
+  const rail = document.getElementById('focus-rail');
+  let focusedIndex = null;
+  let showingBack = false;
+
+  function setPanelImages(foldEl, n, back){
+    const src = `images/brochures/${n}-${back?'back':'front'}.webp`;
+    foldEl.querySelectorAll('.panel').forEach(p=>{
+      p.style.backgroundImage = `url('${src}')`;
+    });
+  }
+
+  BROCHURES.forEach((b, i)=>{
+    const n = i+1;
+    const item = document.createElement('div');
+    item.className = 'broch-item';
+    item.innerHTML = `
+      <div class="tag">B—0${n}</div>
+      <div class="fold"><div class="panels">
+        <div class="panel p1"></div><div class="panel p2"></div><div class="panel p3"></div>
+      </div></div>
+      <div class="name">${b.name}</div>`;
+    setPanelImages(item.querySelector('.fold'), n, false);
+    item.addEventListener('click', ()=> openFocus(i));
+    grid.appendChild(item);
+  });
+
+  function buildRail(){
+    rail.innerHTML='';
+    BROCHURES.forEach((b,i)=>{
+      const n=i+1;
+      const r = document.createElement('div');
+      r.className = 'rail-item' + (i===focusedIndex ? ' active':'');
+      r.innerHTML = `<div class="fold"><div class="panels">
+          <div class="panel p1"></div><div class="panel p2"></div><div class="panel p3"></div>
+        </div></div><div class="name">B—0${n}</div>`;
+      setPanelImages(r.querySelector('.fold'), n, false);
+      r.addEventListener('click', ()=> openFocus(i));
+      rail.appendChild(r);
+    });
+  }
+
+  function openFocus(i){
+    focusedIndex = i;
+    showingBack = false;
+    grid.classList.add('hidden');
+    focusEl.classList.add('active');
+    setPanelImages(focusFold, i+1, false);
+    document.getElementById('focus-flip').textContent = 'Show back ⤿';
+    buildRail();
+  }
+  document.getElementById('broch-close').addEventListener('click', ()=>{
+    focusEl.classList.remove('active');
+    grid.classList.remove('hidden');
+    focusedIndex = null;
+  });
+  document.getElementById('focus-flip').addEventListener('click', function(){
+    showingBack = !showingBack;
+    setPanelImages(focusFold, focusedIndex+1, showingBack);
+    this.textContent = showingBack ? 'Show front ⤾' : 'Show back ⤿';
+  });
+})();
+
+/* ---------- BIMX ---------- */
+if(BIMX_URL){
+  document.getElementById('bimx-frame').innerHTML = `
+    <a class="bimx-open" href="${BIMX_URL}" target="_blank" rel="noopener">Open in new tab ↗</a>
+    <iframe src="${BIMX_URL}" allow="fullscreen" title="BIMx Model"></iframe>`;
+}
+</script>
+</body>
+</html>
